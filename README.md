@@ -25,6 +25,7 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+API feita em Nest, com CRUD e tratamento HttpException, para estudo e treinamento do framework. 
 
 ## Installation
 
