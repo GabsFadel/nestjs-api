@@ -7,8 +7,13 @@ import {
   Put,
   Delete,
   HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { CreateCourseDTO } from './dto/create-course.dto';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { UpdateCourseDTO } from './dto/update-course.dto';
 
 @Controller('courses')
 export class CoursesController {
@@ -21,22 +26,22 @@ export class CoursesController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.courseService.findOne(id + id);
+    return this.courseService.findOne(id);
   }
 
   @Post()
-  create(@Body() body) {
-    return this.courseService.create(body);
+  create(@Body() CreateCourseDTO: CreateCourseDTO) {
+    return this.courseService.create(CreateCourseDTO);
   }
 
   @Put(':id')
-  Upadate(@Param('id') id: number, @Body() body) {
-    return this.courseService.update(id + id, body);
+  Upadate(@Param('id') id: number, @Body() UpdateCourseDTO: UpdateCourseDTO) {
+    return this.courseService.update(id, UpdateCourseDTO);
   }
 
-  @HttpCode(204)
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
   remove(@Param('id') id: number) {
-    return this.courseService.remove(id + id);
+    return this.courseService.remove(id);
   }
 }

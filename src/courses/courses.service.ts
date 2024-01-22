@@ -20,7 +20,7 @@ export class CoursesService {
     const course = this.courses.find((course) => course.id === id);
     if (!course) {
       throw new HttpException(
-        'Course ID ${id} not found',
+        `Course ID ${id} not found`,
         HttpStatus.NOT_FOUND,
       );
     }
@@ -29,6 +29,7 @@ export class CoursesService {
 
   create(createCourseDTO: any) {
     this.courses.push(createCourseDTO);
+    return createCourseDTO;
   }
 
   update(id: number, updateCourseDTO: any) {
